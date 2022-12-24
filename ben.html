@@ -26,7 +26,7 @@
 		}
 
 		.roing {
-			cursor: url("assets/reaching.png") 16 16, grab;
+			cursor: url("ben/assets/reaching.png") 16 16, grab;
 			transform: scale(1.5);
 			transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 			transition-duration: 300ms;
@@ -34,7 +34,7 @@
 		}
 
 		.roing.press {
-			cursor: url("assets/grab.png") 16 16, grabbing;
+			cursor: url("ben/assets/grab.png") 16 16, grabbing;
 			transform: scale(1.2);
 		}
 
@@ -85,18 +85,18 @@
 	<meta property="og:image" content="http://www.benvelie.com/ben.png" />
 	<meta property="og:image" content="http://www.benvelie.com/ben.png" />
 	<meta property="og:description" content="click the human" />
-	<link rel="apple-touch-icon" sizes="120x120" href="assets/apple_touch_icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_16x16.png">
-	<link rel="manifest" href="assets/site.webmanifest">
-	<link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="apple-touch-icon" sizes="120x120" href="ben/assets/apple_touch_icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="ben/assets/favicon_32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="ben/assets/favicon_16x16.png">
+	<link rel="manifest" href="ben/assets/site.webmanifest">
+	<link rel="mask-icon" href="ben/assets/safari-pinned-tab.svg" color="#5bbad5">
 	<meta name="msapplication-TileColor" content="#E8985E">
 	<meta name="theme-color" content="#E8985E">
 </head>
 
 <body>
 	<div class="c">
-		<img class="roing" src="assets/ben.png">
+		<img class="roing" src="ben/assets/ben.png">
 	</div>
 	<div class="time"></div>
 	<div class="count"></div>
@@ -107,8 +107,8 @@
 		const counter = document.querySelector(".count")
 		const discord = document.querySelector(".discord")
 
-		let pressAudio = new Audio("assets/grab.mp3")
-		let releaseAudio = new Audio("assets/release.mp3")
+		let pressAudio = new Audio("ben/assets/grab.mp3")
+		let releaseAudio = new Audio("ben/assets/release.mp3")
 		pressAudio.volume = .15
 		releaseAudio.volume = .15
 
