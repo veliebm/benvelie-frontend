@@ -128,9 +128,6 @@
 				cps++
 			}
 			counter.innerText = `you have clicked ${roingName()} ${clicks} times :)`
-			if (clicks > 10000)
-				counter.innerText = `you have clicked ${roingName()} many times :)`
-
 			localStorage.setItem("clicks", clicks)
 		}
 
@@ -173,10 +170,6 @@
 				if (real)
 					secs++
 				timer.innerText = `you have observed ${roingName()} for ${secs} seconds`
-				if (secs > 60 * 60)
-					timer.innerText = `you have observed ${roingName()} for a long time`
-				if (secs > 60 * 60 * 24)
-					timer.innerText = `you have observed ${roingName()} for a really long time`
 			}
 			localStorage.setItem("secs", secs)
 		}
