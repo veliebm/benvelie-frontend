@@ -127,8 +127,7 @@
 				clicks++
 				cps++
 			}
-			if (clicks >= 25)
-				counter.innerText = `you have clicked ${roingName()} ${clicks} times :)`
+			counter.innerText = `you have clicked ${roingName()} ${clicks} times :)`
 			if (clicks > 10000)
 				counter.innerText = `you have clicked ${roingName()} many times :)`
 
@@ -173,8 +172,7 @@
 			if (document.hasFocus()) {
 				if (real)
 					secs++
-				if (secs >= 90)
-					timer.innerText = `you have observed ${roingName()} for ${secs} seconds`
+				timer.innerText = `you have observed ${roingName()} for ${secs} seconds`
 				if (secs > 60 * 60)
 					timer.innerText = `you have observed ${roingName()} for a long time`
 				if (secs > 60 * 60 * 24)
