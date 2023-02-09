@@ -20,7 +20,7 @@ body {
 }
 
 .ben {
-  cursor: url("ben/assets/reaching.png") 16 16, grab;
+  cursor: url("assets/reaching.png") 16 16, grab;
   transform: scale(1.5);
   transition: cubic-bezier(0.075, 0.82, 0.165, 1);
   transition-duration: 300ms;
@@ -28,7 +28,7 @@ body {
 }
 
 .ben.press {
-  cursor: url("ben/assets/grab.png") 16 16, grabbing;
+  cursor: url("assets/grab.png") 16 16, grabbing;
   transform: scale(1.2);
 }
 
@@ -42,7 +42,27 @@ body {
   font-size: large;
 }
 
+.globalTime {
+  position: absolute;
+  top: 25;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 1em;
+  font-size: large;
+}
+
 .count {
+  position: absolute;
+  bottom: 25;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: large;
+}
+
+.globalCount {
   position: absolute;
   bottom: 0;
   left: 0;

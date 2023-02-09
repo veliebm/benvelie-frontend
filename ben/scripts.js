@@ -1,8 +1,11 @@
 const benPicture = document.querySelector("img.ben");
 
+const backendIp = "http://23.94.194.157:8000"
+
 const timer = document.querySelector(".time")
+const globalTimer = document.querySelector(".globalTime")
 const counter = document.querySelector(".count")
-const discord = document.querySelector(".discord")
+const globalCounter = document.querySelector(".globalCount")
 
 let pressAudio = new Audio("ben/assets/grab.mp3")
 let releaseAudio = new Audio("ben/assets/release.mp3")
@@ -11,14 +14,22 @@ releaseAudio.volume = .15
 
 function count(clicked) {
   let clicks = localStorage.getItem("clicks")
+  let clicksToSendToServer = localStorage.getItem("clicksToSendToServer")
   if (clicks == null) {
     clicks = 0
   }
   if (clicked) {
     clicks++
   }
+  if (clicksToSendToServer == null) {
+    clicksToSendToServer = 0
+  }
+  if (clicksToSendToServer) {
+    clicksToSendToServer++
+  }
   counter.innerText = `you have clicked ben ${clicks} times :)`
   localStorage.setItem("clicks", clicks)
+  localStorage.setItem("clicksToSendToServer", clicksToSendToServer)
 }
 
 count(false)
@@ -50,7 +61,7 @@ function release(e) {
   benPicture.classList.remove("press")
 }
 
-function observing(real) {
+async function observing(real) {
   let secs = localStorage.getItem("secs")
 
   if (secs == null) {
@@ -62,6 +73,32 @@ function observing(real) {
     timer.innerText = `you have observed ben for ${secs} seconds`
   }
   localStorage.setItem("secs", secs)
+
+  await syncWithServer()
+}
+
+async function syncWithServer() {
+  let clicksToSendToServer = localStorage.getItem("clicksToSendToServer")
+  localStorage.setItem("clicksToSendToServer", 0)
+
+  data = await sendAndReceiveCounts(clicksToSendToServer)
+
+  console.log(data)
+  let globalClicks = data["click_count"]
+  let globalSecs = data["observation_time"]
+
+  globalCounter.innerText = `everyone has clicked ben ${globalClicks} times >:)`
+  globalTimer.innerText = `everyone has observed ben for ${globalSecs} seconds`
+
+}
+
+async function sendAndReceiveCounts(clicksToSend) {
+  return fetch(backendIp + "/totals?click_count=" + clicksToSend)
+    .then(async (response) => {
+      let responseText = await response.text()
+      console.log(responseText)
+      return JSON.parse(responseText)
+    })
 }
 
 observing(false)
