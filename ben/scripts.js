@@ -9,8 +9,6 @@ let releaseAudio = new Audio("ben/assets/release.mp3")
 pressAudio.volume = .15
 releaseAudio.volume = .15
 
-let cps = 0
-
 function count(clicked) {
   let clicks = localStorage.getItem("clicks")
   if (clicks == null) {
@@ -18,7 +16,6 @@ function count(clicked) {
   }
   if (clicked) {
     clicks++
-    cps++
   }
   counter.innerText = `you have clicked ben ${clicks} times :)`
   localStorage.setItem("clicks", clicks)
