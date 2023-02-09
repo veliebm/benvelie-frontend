@@ -9,10 +9,6 @@ let releaseAudio = new Audio("ben/assets/release.mp3")
 pressAudio.volume = .15
 releaseAudio.volume = .15
 
-function benName() {
-  return "ben"
-}
-
 let cps = 0
 
 function count(clicked) {
@@ -24,7 +20,7 @@ function count(clicked) {
     clicks++
     cps++
   }
-  counter.innerText = `you have clicked ${benName()} ${clicks} times :)`
+  counter.innerText = `you have clicked ben ${clicks} times :)`
   localStorage.setItem("clicks", clicks)
 }
 
@@ -48,7 +44,7 @@ function press(e) {
   play(pressAudio)
   ben.classList.add("press")
   count(true)
-  document.title = benName()
+  document.title = "ben"
 }
 
 function release(e) {
@@ -66,7 +62,7 @@ function observing(real) {
   if (document.hasFocus()) {
     if (real)
       secs++
-    timer.innerText = `you have observed ${benName()} for ${secs} seconds`
+    timer.innerText = `you have observed ben for ${secs} seconds`
   }
   localStorage.setItem("secs", secs)
 }
