@@ -1,4 +1,4 @@
-const ben = document.querySelector("img.ben");
+const benPicture = document.querySelector("img.ben");
 
 const timer = document.querySelector(".time")
 const counter = document.querySelector(".count")
@@ -39,7 +39,7 @@ function play(audio) {
 function press(e) {
   e.preventDefault()
   play(pressAudio)
-  ben.classList.add("press")
+  benPicture.classList.add("press")
   count(true)
   document.title = "ben"
 }
@@ -47,7 +47,7 @@ function press(e) {
 function release(e) {
   e.preventDefault()
   play(releaseAudio)
-  ben.classList.remove("press")
+  benPicture.classList.remove("press")
 }
 
 function observing(real) {
@@ -68,11 +68,11 @@ observing(false)
 
 setInterval(() => observing(true), 1000)
 
-ben.addEventListener("touchstart", press)
-ben.addEventListener("touchend", release)
+benPicture.addEventListener("touchstart", press)
+benPicture.addEventListener("touchend", release)
 
-ben.addEventListener("mousedown", press)
-ben.addEventListener("mouseup", release)
+benPicture.addEventListener("mousedown", press)
+benPicture.addEventListener("mouseup", release)
 
 timer.addEventListener("click", e => {
   localStorage.removeItem("secs")
