@@ -25,7 +25,7 @@
 			flex-direction: column;
 		}
 
-		.roing {
+		.ben {
 			cursor: url("ben/assets/reaching.png") 16 16, grab;
 			transform: scale(1.5);
 			transition: cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -33,7 +33,7 @@
 			transition-property: transform;
 		}
 
-		.roing.press {
+		.ben.press {
 			cursor: url("ben/assets/grab.png") 16 16, grabbing;
 			transform: scale(1.2);
 		}
@@ -96,12 +96,12 @@
 
 <body>
 	<div class="c">
-		<img class="roing" src="ben/assets/ben.png">
+		<img class="ben" src="ben/assets/ben.png">
 	</div>
 	<div class="time"></div>
 	<div class="count"></div>
 	<script>
-		const roing = document.querySelector("img.roing");
+		const ben = document.querySelector("img.ben");
 
 		const timer = document.querySelector(".time")
 		const counter = document.querySelector(".count")
@@ -112,7 +112,7 @@
 		pressAudio.volume = .15
 		releaseAudio.volume = .15
 
-		function roingName() {
+		function benName() {
 			return "ben"
 		}
 
@@ -127,7 +127,7 @@
 				clicks++
 				cps++
 			}
-			counter.innerText = `you have clicked ${roingName()} ${clicks} times :)`
+			counter.innerText = `you have clicked ${benName()} ${clicks} times :)`
 			localStorage.setItem("clicks", clicks)
 		}
 
@@ -149,15 +149,15 @@
 		function press(e) {
 			e.preventDefault()
 			play(pressAudio)
-			roing.classList.add("press")
+			ben.classList.add("press")
 			count(true)
-			document.title = roingName()
+			document.title = benName()
 		}
 
 		function release(e) {
 			e.preventDefault()
 			play(releaseAudio)
-			roing.classList.remove("press")
+			ben.classList.remove("press")
 		}
 
 		function observing(real) {
@@ -169,7 +169,7 @@
 			if (document.hasFocus()) {
 				if (real)
 					secs++
-				timer.innerText = `you have observed ${roingName()} for ${secs} seconds`
+				timer.innerText = `you have observed ${benName()} for ${secs} seconds`
 			}
 			localStorage.setItem("secs", secs)
 		}
@@ -178,11 +178,11 @@
 
 		setInterval(() => observing(true), 1000)
 
-		roing.addEventListener("touchstart", press)
-		roing.addEventListener("touchend", release)
+		ben.addEventListener("touchstart", press)
+		ben.addEventListener("touchend", release)
 
-		roing.addEventListener("mousedown", press)
-		roing.addEventListener("mouseup", release)
+		ben.addEventListener("mousedown", press)
+		ben.addEventListener("mouseup", release)
 
 		timer.addEventListener("click", e => {
 			localStorage.removeItem("secs")
