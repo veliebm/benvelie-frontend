@@ -1,6 +1,6 @@
 const benPicture = document.querySelector("img.ben");
 
-const backendIp = "http://23.94.194.157:8000"
+const backendIp = "https://veliebm.pythonanywhere.com"
 
 const timer = document.querySelector(".time")
 const globalTimer = document.querySelector(".globalTime")
@@ -80,7 +80,6 @@ async function observing(real) {
 async function syncWithServer() {
   let clicksToSendToServer = localStorage.getItem("clicksToSendToServer")
   localStorage.setItem("clicksToSendToServer", 0)
-
   data = await sendAndReceiveCounts(clicksToSendToServer)
 
   console.log(data)
