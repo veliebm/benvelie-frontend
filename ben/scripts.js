@@ -8,8 +8,8 @@ const counter = document.querySelector(".count");
 const globalCounter = document.querySelector(".globalCount");
 const pressAudio = new Audio("ben/assets/grab.mp3");
 const releaseAudio = new Audio("ben/assets/release.mp3");
-let audioCount = 0;
 const maxAudios = 8;
+let audioCount = 0;
 
 const count = (clicked) => {
   let clicks = localStorage.getItem("clicks") || 0;
@@ -47,10 +47,10 @@ const release = (e) => {
   benPicture.classList.remove("press");
 };
 
-const observing = async (real) => {
+const observing = async () => {
   let secs = localStorage.getItem("secs") || 0;
   if (document.hasFocus()) {
-    if (real) secs++;
+    secs++;
     timer.innerText = `you have observed ben for ${secs} seconds`;
   }
   localStorage.setItem("secs", secs);
@@ -58,14 +58,12 @@ const observing = async (real) => {
 };
 
 const syncWithServer = async () => {
-  let clicksToSendToServer = localStorage.getItem("clicksToSendToServer") || 0;
+  const clicksToSendToServer = localStorage.getItem("clicksToSendToServer") || 0;
   localStorage.setItem("clicksToSendToServer", 0);
-  const data = await sendAndReceiveCounts(clicksToSendToServer);
-  console.log(data);
-  const globalClicks = data["click_count"];
-  const globalSecs = data["observation_time"];
-  globalCounter.innerText = `everyone has clicked ben ${globalClicks} times >:)`;
-  globalTimer.innerText = `everyone has observed ben for ${globalSecs} seconds`;
+  const globalData = await sendAndReceiveCounts(clicksToSendToServer);
+  console.log(globalData);
+  globalCounter.innerText = `everyone has clicked ben ${globalData["click_count"]} times >:)`;
+  globalTimer.innerText = `everyone has observed ben for ${globalData["observation_time"]} seconds`;
 };
 
 const sendAndReceiveCounts = async (clicksToSend) => {
@@ -76,7 +74,7 @@ const sendAndReceiveCounts = async (clicksToSend) => {
 };
 
 count(false);
-setInterval(() => observing(true), 1000);
+setInterval(() => observing(), 1000);
 benPicture.addEventListener("touchstart", press);
 benPicture.addEventListener("touchend", release);
 benPicture.addEventListener("mousedown", press);
