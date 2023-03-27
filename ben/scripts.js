@@ -18,14 +18,12 @@ const pressAudio = new Audio("ben/assets/grab.mp3");
 const releaseAudio = new Audio("ben/assets/release.mp3");
 const maxAudios = 8;
 let audioCount = 0;
-const count = (clicked) => {
+const count = () => {
     let clicks = localStorage.getItem("clicks") || "0";
     let clicksToSendToServer = localStorage.getItem("clicksToSendToServer") || "0";
-    if (clicked) {
-        clicks = (parseInt(clicks) + 1).toString();
-        clicksToSendToServer = (parseInt(clicksToSendToServer) + 1).toString();
-    }
-    counter.innerText = `you have clicked ben ${clicks} times :)`;
+    clicks = (parseInt(clicks) + 1).toString();
+    clicksToSendToServer = (parseInt(clicksToSendToServer) + 1).toString();
+    counter.innerText = getLocalCounterTextMessage(clicks);
     localStorage.setItem("clicks", clicks);
     localStorage.setItem("clicksToSendToServer", clicksToSendToServer);
 };
@@ -44,13 +42,16 @@ const press = (e) => {
     e.preventDefault();
     play(pressAudio);
     benPicture.classList.add("press");
-    count(true);
+    count();
     document.title = "ben";
 };
 const release = (e) => {
     e.preventDefault();
     play(releaseAudio);
     benPicture.classList.remove("press");
+};
+const getLocalCounterTextMessage = (count) => {
+    return `you have clicked ben ${count} times :)`;
 };
 const observing = () => __awaiter(void 0, void 0, void 0, function* () {
     let secs = localStorage.getItem("secs") || "0";
@@ -75,7 +76,7 @@ const sendAndReceiveCounts = (clicksToSend) => __awaiter(void 0, void 0, void 0,
     console.log(responseText);
     return JSON.parse(responseText);
 });
-count(false);
+counter.innerText = getLocalCounterTextMessage(localStorage.getItem("clicks") || "0");
 setInterval(() => observing(), 1000);
 benPicture.addEventListener("touchstart", press);
 benPicture.addEventListener("touchend", release);
