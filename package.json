@@ -4,7 +4,7 @@
   "description": "Front-end for Ben Velie's website.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,10 @@
     "url": "https://github.com/veliebm/benvelie-site/issues"
   },
   "homepage": "https://github.com/veliebm/benvelie-site#readme",
-  "dependencies": {
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.0.5",
     "typescript": "^5.0.3"
   }
 }
