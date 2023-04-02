@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call Center-ifier</title>
+    <link rel="stylesheet" href="upgrade-audio/styles.css" />
+  </head>
+  <body>
+    <h1>Make your audio sound better!</h1>
+    <input type="file" id="audio-input" accept="audio/*" />
+    <div class="options">
+      <label
+        ><input type="checkbox" id="band-pass-filter" /> Band-pass Filter</label
+      >
+      <label><input type="checkbox" id="compression" /> Compression</label>
+      <label><input type="checkbox" id="downsample" /> Downsample</label>
+      <label><input type="checkbox" id="distortion" /> Distortion</label>
+      <label><input type="checkbox" id="echo" /> Echo</label>
+    </div>
+    <button id="process">Apply Distortions</button>
+    <div id="status"></div>
+    <button id="download" hidden>Download Distorted Audio</button>
+    <script src="upgrade-audio/main.js"></script>
+  </body>
+</html>
