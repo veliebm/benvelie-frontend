@@ -1,2 +1,3 @@
-# misfortune-cookie
-A virtual cookie that users can break to get their misfortune told.
+# Summary
+
+A cute virtual cookie that users can break to get their misfortune told.
