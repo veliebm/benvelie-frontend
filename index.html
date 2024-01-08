@@ -37,21 +37,13 @@
 
 <script>
   function on_select(element) {
-    if (element.options[element.selectedIndex].value == 'employer') {
-      document.getElementById('employer').style.display = 'block';
-    } else {
-      document.getElementById('employer').style.display = 'none';
-    }
-    if (element.options[element.selectedIndex].value == 'friend') {
-      document.getElementById('friend').style.display = 'block';
-    } else {
-      document.getElementById('friend').style.display = 'none';
-    }
-    if (element.options[element.selectedIndex].value == 'silly') {
-      document.getElementById('silly').style.display = 'block';
-    } else {
-      document.getElementById('silly').style.display = 'none';
-    }
+    ["employer", "friend", "silly"].forEach(userType => {
+      if (element.options[element.selectedIndex].value == userType) {
+        document.getElementById(userType).style.display = 'block';
+      } else {
+        document.getElementById(userType).style.display = 'none';
+      }
+    });
   }
 </script>
 
